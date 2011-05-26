@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="genweb.portlets">
+
+    <include package ="plone.app.portlets" />
+    
+<!-- add a management view for the portlet manager -->
+    <browser:page
+         name="manage-homeportlets"
+         for="plone.portlets.interfaces.ILocalPortletAssignable"
+         class="plone.app.portlets.browser.manage.ManageContextualPortlets"
+         template="templates/managehomeportlets.pt"
+         permission="plone.app.portlets.ManagePortlets"
+    />
+
+<!-- ADAPTERS -->
+<!-- make an adapter for our very own renderer -->
+<adapter
+    factory="genweb.portlets.browser.manager.GenwebPortletRenderer"
+    provides="plone.portlets.interfaces.IPortletManagerRenderer"
+    />
+
+</configure>

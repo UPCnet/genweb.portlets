@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<layers>
+ <layer name="GenwebPortlets"
+   interface="genweb.portlets.browser.interfaces.IGenwebPortlets"
+ />
+</layers>

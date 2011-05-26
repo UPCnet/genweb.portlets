@@ -3,10 +3,25 @@
 
  <!-- Portlet type registrations -->
 
- <portlet
-   addview="genweb.portlets.portlets.rssvideoportlet"
-   title="rssvideoportlet"
-   description="Genweb reusable portlets"
-   />
+<!-- <portlet-->
+<!--   addview="genweb.portlets.portlets.rssvideoportlet"-->
+<!--   title="rssvideoportlet"-->
+<!--   description="Genweb reusable portlets"-->
+<!--   />-->
+
+    <portletmanager 
+         name="genweb.portlets.HomePortletManager1"
+         type="genweb.portlets.browser.interfaces.IPortletsHomepage"
+    />
+
+    <portletmanager 
+         name="genweb.portlets.HomePortletManager2"
+         type="genweb.portlets.browser.interfaces.IPortletsHomepage"
+    />
+
+    <portletmanager 
+         name="genweb.portlets.HomePortletManager3"
+         type="genweb.portlets.browser.interfaces.IPortletsHomepage"
+    />
 
 </portlets>

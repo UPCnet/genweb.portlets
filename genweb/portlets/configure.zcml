@@ -3,13 +3,15 @@
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:plone="http://namespaces.plone.org/plone"
-    i18n_domain="genweb.portlets.portlets">
+    i18n_domain="genweb.portlets">
 
     <five:registerPackage package="." initialize=".initialize" />
-
+    
+    <include package=".browser" />
+    
     <genericsetup:registerProfile
        name="default"
-       title="rssvideoportlet"
+       title="Genweb Portlets"
        directory="profiles/default"
        description="Genweb reusable portlets"
        provides="Products.GenericSetup.interfaces.EXTENSION"
