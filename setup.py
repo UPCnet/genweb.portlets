@@ -23,6 +23,11 @@ setup(name='genweb.portlets',
       namespace_packages=['genweb'],
       include_package_data=True,
       zip_safe=False,
+      extras_require = {
+          'test': [
+              'plone.app.testing',
+          ]
+      },
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
@@ -33,6 +38,4 @@ setup(name='genweb.portlets',
       [z3c.autoinclude.plugin]
       target = plone
       """,
-      setup_requires=["PasteScript"],
-      paster_plugins=["ZopeSkel"],
       )
