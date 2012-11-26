@@ -19,44 +19,242 @@
         <div metal:fill-slot="portlets_one_slot">
             <tal:comment tal:replace="nothing">get rid of the left hand column portlets to avoid confusion</tal:comment>
         </div>
-        
+
         <div metal:fill-slot="main">
 
             <tal:warning tal:condition="plone_view/isDefaultPageInFolder">
-                <dl class="portalMessage warning">
-                    <dt i18n:translate="message_warning_footer_area_dt">Is this really where you want to add portlets in the footer area?</dt>
-                    <dd i18n:translate="message_warning_footer_area_dd">If you add portlets here, they will only appear on this item. If instead you want portlets to appear on all items in this folder, 
-                        <a href=""
-                           tal:attributes="href string:${plone_view/getCurrentFolderUrl}/@@manage-footerportlets"
+              <div class="alert alert-info"
+                   tal:attributes="class string:alert alert-warning">
+                    <button data-dismiss="alert" class="close" type="button">×</button>
+                    <strong i18n:translate="">
+                              Warning
+                    </strong>
+                    <tal:msg i18n:translate="message_warning_footer_area_dt">
+                      Is this really where you want to add portlets in the footer area?
+                    </tal:msg>
+                    <tal:msg i18n:translate="message_warning_footer_area_dd">
+                      If you add portlets here, they will only appear on this item. If instead you want portlets to appear on all items in this folder,
+                      <a href=""
+                           tal:attributes="href string:${plone_view/getCurrentFolderUrl}/@@manage-homeportlets"
                             i18n:name="manage-footerportlets_link">
                             <span i18n:translate="add_them_to_the_folder_itself">add them to the folder itself</span>
                         </a>
-                    </dd>
-                <dl>
-            </tal:warning>  
+                    </tal:msg>
+              </div>
+            </tal:warning>
 
             <h1 class="documentFirstHeading"
-                i18n:translate="manage_portlets_footer">Manage Footer portlets</h1>
-            
+                i18n:translate="manage_portlets_footer">Manage home portlets</h1>
+
             <p>
-                 <a href=""
-                       class="link-parent"
-                       tal:attributes="href string:${context/absolute_url}"
-                       i18n:translate="return_to_view">
-                    Return
-                 </a>
-            </p>            
+             <a href=""
+                   class="link-parent"
+                   tal:attributes="href string:${context/absolute_url}"
+                   i18n:translate="return_to_view">
+                Return
+             </a>
+            </p>
+
+<section id="content">
+  <div class="container">
+    <div class="row-fluid">
+      <div id="portal-column-one" class="span3">
+          <h2 i18n:translate="footer-portlet-a">Menu L2</h2>
+          <span tal:replace="structure provider:genweb.portlets.HomePortletManager1" />
+      </div>
+
+      <div id="portal-column-content" class="span9">
+          <div id="edit-bar" class="clearfix">
+          <ul class="nav nav-tabs pull-left clearfix">
+            <li class="active"><a href="#">Continguts</a></li>
+            <li><a href="#">Visualitza</a></li>
+            <li><a href="#">Edita</a></li>
+          </ul>
+          <ul class="nav nav-pills pull-right clearfix">
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Accions <b class="caret"></b></a>
+              <ul class="dropdown-menu pull-right">
+                <li><a href="#"><i class="icon-cut"></i> Talla</a></li>
+                <li><a href="#"><i class="icon-copy"></i> Copia</a></li>
+                <li><a href="#"><i class="icon-paste"></i> Enganxa</a></li>
+                <li><a href="#"><i class="icon-remove"></i> Suprimeix</a></li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="icon-rename"></i> Canvia el nom</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Vistes <b class="caret"></b></a>
+              <ul class="dropdown-menu pull-right">
+                <li class="nav-header">Vista de la carpeta</li>
+                <li><a href="#"><i class="icon-home"></i> Pàgina d'inici</a></li>
+                <li><a href="#"><i class="icon-list-view"></i> Estàndard</a></li>
+                <li><a href="#"><i class="icon-list-extended-view"></i> Estesa</a></li>
+                <li><a href="#"><i class="icon-th"></i> Miniatures</a></li>
+                <li><a href="#"><i class="icon-resume-view"></i> Resum</a></li>
+                <li><a href="#"><i class="icon-table-view"></i> Tabular</a></li>
+                <li><a href="#"><i class="icon-content-view"></i> Tot el contingut</a></li>
+                <li class="divider"></li>
+                <li class="nav-header">Contingut com a vista</li>
+                <li><a href="#"><i class="icon-star-empty"></i> Escull contingut per defecte…</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Afegeix nou… <b class="caret"></b></a>
+              <ul class="dropdown-menu pull-right">
+                <li><a href="#"><i class="icon-folder-close"></i> Carpeta</a></li>
+                <li><a href="#"><i class="icon-collage"></i> Collage</a></li>
+                <li><a href="#"><i class="icon-smart-folder"></i> Col·lecció</a></li>
+                <li><a href="#"><i class="icon-link"></i> Enllaç</a></li>
+                <li><a href="#"><i class="icon-box"></i> Empaquetat</a></li>
+                <li><a href="#"><i class="icon-poll"></i> Enquesta</a></li>
+                <li><a href="#"><i class="icon-calendar"></i> Esdeveniment</a></li>
+                <li><a href="#"><i class="icon-iframe"></i> Finestra iFrame</a></li>
+                <li><a href="#"><i class="icon-file"></i> Fitxer</a></li>
+                <li><a href="#"><i class="icon-check"></i> Formulari</a></li>
+                <li><a href="#"><i class="icon-warning-sign"></i> Gestor d'incidències</a></li>
+                <li><a href="#"><i class="icon-picture"></i> Imatge</a></li>
+                <li><a href="#"><i class="icon-news"></i> Notícia</a></li>
+                <li><a href="#"><i class="icon-page"></i> Pàgina</a></li>
+                <li><a href="#"><i class="icon-list-alt"></i> Qüestionari</a></li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="icon-filter"></i> Restriccions…</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Estat: <span class="label label-success">Esborrany</span> <b class="caret"></b></a>
+              <ul class="dropdown-menu pull-right">
+                <li><a href="#" class="state-published">Públic</a></li>
+                <li><a href="#" class="state-pending">Revisió</a></li>
+                <li><a href="#" class="state-intranet">Intranet</a></li>
+                <li><a href="#" class="state-private">Privat</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="alert alert-info">
+          <button data-dismiss="alert" class="close" type="button">×</button>
+          <strong>Infromació.</strong> S'han desat els canvis a les <span class="label label-info">12:25</span> hores.
+        </div>
+
+
+        <h1 class="documentFirstHeading">Presentació</h1>
+        <p class="documentDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+        <h2>Lorem Ipsum</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        <br />
+        <br />
+
+        <div class="row-fluid">
+          <div class="span4">
+            <div class="portlet portlet-noticies">
+              <h2>Actualitat UPC <i class="icon-upc large-icon pull-right"></i></h2>
+              <ul class="list-portlet">
+                <li>
+                  <a href="#">Lorem ipsum dolor sit amet.</a>
+                  <time class="smaller">27-11-2012</time>
+                </li>
+                <li>
+                  <a href="#">Ut enim ad minim, quis nostrud. <img alt="(obriu en finestra nova)" src="img/blank_blau.png" class="img_blank"></a>
+                  <time class="smaller">26-11-2012</time>
+
+                </li>
+                <li>
+                  <a href="#">Sint occaecat cupidatat non proident. <img alt="(obriu en finestra nova)" src="img/blank_blau.png" class="img_blank"></a>
+                  <time class="smaller">25-11-2012</time>
+                </li>
+                <li>
+                  <a href="#">Duis aute irure dolor in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</a>
+                  <time class="smaller">23-11-2012</time>
+                </li>
+                <li>
+                  <a href="#">Nostrud exercitation ullamco laboris nisi ut aliquip.</a>
+                  <time class="smaller">23-11-2012</time>
+                </li>
+              </ul>
+              <a href="#" class="portlet-footer">Sala de Premsa <img alt="(obriu en finestra nova)" src="img/blank_blau.png" class="img_blank"></a>
+            </div>
+          </div>
+
+          <div class="span4">
+            <div class="portlet portlet-noticies">
+              <h2>Notícies <i class="icon-news large-icon pull-right"></i></h2>
+              <ul class="list-portlet">
+                <li>
+                  <a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
+                  <time class="smaller">27-11-2012</time>
+                </li>
+                <li>
+                  <a href="#">Ut enim ad minim veniam, quis nostrud. <img alt="(obriu en finestra nova)" src="img/blank_blau.png" class="img_blank"></a>
+                  <time class="smaller">26-11-2012</time>
+
+                </li>
+                <li>
+                  <a href="#">Excepteur sint occaecat cupidatat non proident. <img alt="(obriu en finestra nova)" src="img/blank_blau.png" class="img_blank"></a>
+                  <time class="smaller">25-11-2012</time>
+                </li>
+                <li>
+                  <a href="#">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</a>
+                  <time class="smaller">23-11-2012</time>
+                </li>
+                <li>
+                  <a href="#">Quis nostrud exercitation ullamco laboris nisi ut aliquip.</a>
+                  <time class="smaller">23-11-2012</time>
+                </li>
+              </ul>
+              <a href="#" class="portlet-footer"><i class="icon-rss"></i> Més notícies</a>
+            </div>
+          </div>
+
+          <div class="span4">
+            <div class="portlet portlet-esdeveniments">
+              <h2>Agenda <i class="icon-calendar large-icon pull-right"></i></h2>
+              <ul class="unstyled">
+                <li>
+                  <a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
+                  <time class="smaller" datetime="2013-09-27">27 <abbr rel="tooltip" data-placement="left" data-original-title="setembre">set.</abbr></time>
+                </li>
+                <li>
+                  <a href="#">Ut enim ad minim veniam, quis nostrud. <img alt="(obriu en finestra nova)" src="img/blank_blau.png" class="img_blank"></a>
+                  <time class="smaller" datetime="2013-09-27">27 <abbr rel="tooltip" data-placement="left" data-original-title="setembre">set.</abbr></time>
+
+                </li>
+                <li>
+                  <a href="#">Excepteur sint occaecat cupidatat non proident. <img alt="(obriu en finestra nova)" src="img/blank_blau.png" class="img_blank"></a>
+                  <time class="smaller" datetime="2013-09-27">27 <abbr rel="tooltip" data-placement="left" data-original-title="setembre">set.</abbr></time>
+                </li>
+                <li>
+                  <a href="#">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</a>
+                  <time class="smaller" datetime="2013-09-27">27 <abbr rel="tooltip" data-placement="left" data-original-title="setembre">set.</abbr></time>
+                </li>
+                <li>
+                  <a href="#">Quis nostrud exercitation ullamco laboris nisi ut aliquip.</a>
+                  <time class="smaller" datetime="2013-09-27">27 <abbr rel="tooltip" data-placement="left" data-original-title="setembre">set.</abbr></time>
+                </li>
+              </ul>
+              <a href="#" class="portlet-footer">Més esdeveniments</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
             <div class="row">
                 <div class="cell position-0">
                     <h2 i18n:translate="footer-portlet-a">Columna Principal</h2>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager1" />
                 </div>
-            
+
                 <div class="cell position-5">
                     <h2 i18n:translate="footer-portlet-b">Columna 2</h2>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager2" />
                 </div>
-            
+
                 <div class="cell position-10">
                     <h2 i18n:translate="footer-portlet-c">Columna 3</h2>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager3" />
