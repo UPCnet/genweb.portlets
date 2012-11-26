@@ -15,6 +15,15 @@
         permission="plone.app.portlets.ManagePortlets"
     />
 
+    <browser:page
+        for="*"
+        name="manage-portlets-macros"
+        class="plone.app.portlets.browser.manage.ManageContextualPortlets"
+        template="templates/edit-manager-macros.pt"
+        permission="plone.app.portlets.ManageOwnPortlets"
+        layer="genweb.portlets.browser.interfaces.IGenwebPortlets"
+        />
+
 <!-- ADAPTERS -->
 <!-- make an adapter for our very own renderer -->
     <adapter
