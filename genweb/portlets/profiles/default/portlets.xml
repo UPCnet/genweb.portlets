@@ -9,19 +9,33 @@
 <!--   description="Genweb reusable portlets"-->
 <!--   />-->
 
-    <portletmanager 
+    <portletmanager
          name="genweb.portlets.HomePortletManager1"
          type="genweb.portlets.browser.interfaces.IPortletsHomepage"
     />
 
-    <portletmanager 
+    <portletmanager
          name="genweb.portlets.HomePortletManager2"
          type="genweb.portlets.browser.interfaces.IPortletsHomepage"
     />
 
-    <portletmanager 
+    <portletmanager
          name="genweb.portlets.HomePortletManager3"
          type="genweb.portlets.browser.interfaces.IPortletsHomepage"
     />
 
+    <portletmanager
+         name="genweb.portlets.HomePortletManager4"
+         type="genweb.portlets.browser.interfaces.IPortletsHomepage"
+    />
+
+    <portletmanager
+         name="genweb.portlets.HomePortletManager5"
+         type="genweb.portlets.browser.interfaces.IPortletsHomepage"
+    />
+
+    <portletmanager
+         name="genweb.portlets.HomePortletManager6"
+         type="genweb.portlets.browser.interfaces.IPortletsHomepage"
+    />
 </portlets>
