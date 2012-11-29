@@ -11,9 +11,12 @@
             Add portlet
         </label>
 
+        <label class="hiddenStructure">Afegeix un portlet</label>
         <div class="btn-group">
-          <button class="btn" i18n:translate="label_add_portlet_ellipsis">Add portlet&hellip;</button>
           <button class="btn dropdown-toggle" data-toggle="dropdown">
+            <tal:addportlet i18n:translate="label_add_portlet_ellipsis">
+              Add portlet&hellip;
+            </tal:addportlet>
             <span class="caret"></span>
           </button>
           <ul id="gwportletselector" class="dropdown-menu">

@@ -14,7 +14,12 @@
           $a = $(event.target)
           $form = $('#portletselectorform')
           $form.find('input[name=":action"]').val($a.attr('href'))
-          $form.submit()
+          $form.submit();
+        });
+        $('.editable').bind('keyup', function(event) {
+          event.preventDefault()
+          event.stopPropagation()
+          console.log("elooo")
         })
       });
     </script>
@@ -75,35 +80,101 @@
         <div id="portal-columns" class="row-fluid">
           <div class="span12">
             <div class="row-fluid">
-              <div id="portal-column-one" class="span3">
+              <div id="portal-column-one" class="span2">
                   <h2 i18n:translate="homeportlets_title_1">Menu L2</h2>
                   <span tal:replace="structure provider:genweb.portlets.HomePortletManager1" />
               </div>
-              <div id="portal-column-content" class="span9">
+              <div id="portal-column-content" class="span10">
                 <div class="row-fluid">
                   <div class="span12">
-                    <h2 i18n:translate="homeportlets_title_2">Fila element interactiu</h2>
+                    <h2 i18n:translate="homeportlets_title_2">1a Fila</h2>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager2" />
                   </div>
                 </div>
+                <h2 class="liniaDalt" i18n:translate="homeportlets_title_2">2a Fila</h2>
                 <div class="row-fluid">
-                  <div class="span4">
-                    <h2 i18n:translate="homeportlets_title_3">Contingut principal</h2>
+                  <div class="span3">
+                    <div class="clearfix">
+                      <h3 class="pull-left">Columna 1</h3>
+                      <div class="input-prepend pull-right clearfix">
+                        <span class="add-on">span</span>
+                        <input class="editable" type="text" placeholder="4" style="width: 10px;">
+                      </div>
+                    </div>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager3" />
                   </div>
-                  <div class="span4">
-                    <h2 i18n:translate="homeportlets_title_4">Columna 1 - contingut principal</h2>
+                  <div class="span3">
+                    <div class="clearfix">
+                      <h3 class="pull-left">Columna 2</h3>
+                      <div class="input-prepend pull-right clearfix">
+                        <span class="add-on">span</span>
+                        <input type="text" placeholder="4" style="width: 10px;">
+                      </div>
+                    </div>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager4" />
                   </div>
-                  <div class="span4">
-                    <h2 i18n:translate="homeportlets_title_5">Columna 2 - contingut principal</h2>
+                  <div class="span3">
+                    <div class="clearfix">
+                      <h3 class="pull-left">Columna 3</h3>
+                      <div class="input-prepend pull-right clearfix">
+                        <span class="add-on">span</span>
+                        <input type="text" placeholder="4" style="width: 10px;">
+                      </div>
+                    </div>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager5" />
                   </div>
-                </div>
-                <div class="row-fluid">
-                  <div class="span12">
-                    <h2 i18n:translate="homeportlets_title_6">Fila de peu de contingut principal</h2>
+                  <div class="span3">
+                    <div class="clearfix">
+                      <h3 class="pull-left">Columna 4</h3>
+                      <div class="input-prepend pull-right clearfix">
+                        <span class="add-on">span</span>
+                        <input type="text" placeholder="4" style="width: 10px;">
+                      </div>
+                    </div>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager6" />
+                  </div>
+                </div>
+                <h2 class="liniaDalt" i18n:translate="homeportlets_title_2">3a Fila</h2>
+                <div class="row-fluid">
+                  <div class="span3">
+                    <div class="clearfix">
+                      <h3 class="pull-left">Columna 1</h3>
+                      <div class="input-prepend pull-right clearfix">
+                        <span class="add-on">span</span>
+                        <input type="text" placeholder="4" style="width: 10px;">
+                      </div>
+                    </div>
+                    <span tal:replace="structure provider:genweb.portlets.HomePortletManager7" />
+                  </div>
+                  <div class="span3">
+                    <div class="clearfix">
+                      <h3 class="pull-left">Columna 2</h3>
+                      <div class="input-prepend pull-right clearfix">
+                        <span class="add-on">span</span>
+                        <input type="text" placeholder="4" style="width: 10px;">
+                      </div>
+                    </div>
+                    <span tal:replace="structure provider:genweb.portlets.HomePortletManager8" />
+                  </div>
+                  <div class="span3">
+                    <div class="clearfix">
+                      <h3 class="pull-left">Columna 3</h3>
+                      <div class="input-prepend pull-right clearfix">
+                        <span class="add-on">span</span>
+                        <input type="text" placeholder="4" style="width: 10px;">
+                      </div>
+                    </div>
+                    <span tal:replace="structure provider:genweb.portlets.HomePortletManager9" />
+                  </div>
+                  <div class="span3">
+                    <div class="clearfix">
+                      <h3 class="pull-left">Columna 4</h3>
+                      <div class="input-prepend pull-right clearfix">
+                        <span class="add-on">span</span>
+                        <input type="text" placeholder="4" style="width: 10px;">
+                      </div>
+                    </div>
+                    <span tal:replace="structure provider:genweb.portlets.HomePortletManager10" />
                   </div>
                 </div>
               </div>
