@@ -17,8 +17,25 @@
           $form.submit();
         });
         $('.editable').bind('keyup', function(event) {
+          $('#kss-spinner').show()
           event.preventDefault()
           event.stopPropagation()
+          data = {'manager': $(this).data()['manager'],
+                  'contextId': $(this).data()['contextId'],
+                  'span': $(this).val()}
+          $.ajax({
+            url: portal_url + "/@@set-portlethomemanager-span",
+            data: data,
+            type: 'POST',
+            success: function(data){
+                console.log("saved")
+                $('#kss-spinner').hide();
+            },
+            error: function(){
+                console.log("error")
+                $('#kss-spinner').hide();
+            }
+          });
           console.log("elooo")
         })
       });
@@ -98,7 +115,10 @@
                       <h3 class="pull-left">Columna 1</h3>
                       <div class="input-prepend pull-right clearfix">
                         <span class="add-on">span</span>
-                        <input class="editable" type="text" placeholder="4" style="width: 10px;">
+                        <input class="editable" type="text" placeholder="4" style="width: 10px;"
+                               data-manager="genweb.portlets.HomePortletManager3"
+                               tal:attributes="data-context-id context/id;">
+                                               <!-- value python:view.getValue('genweb.portlets.HomePortletManager3')"> -->
                       </div>
                     </div>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager3" />

@@ -6,14 +6,6 @@
 
     <include package ="plone.app.portlets" />
 
-    <class class="genweb.portlets.browser.manager.GenwebPortletRenderer">
-        <implements interface="zope.annotation.interfaces.IAttributeAnnotatable" />
-    </class>
-
-    <class class="genweb.portlets.browser.manager.gwContextualEditPortletManagerRenderer">
-        <implements interface="zope.annotation.interfaces.IAttributeAnnotatable" />
-    </class>
-
 <!-- add a management view for the portlet manager -->
     <browser:page
         name="manage-homeportlets"
@@ -51,4 +43,7 @@
         factory="genweb.portlets.browser.manager.gwContextualEditPortletManagerRenderer"
         provides="plone.portlets.interfaces.IPortletManagerRenderer"
     />
+
+    <adapter factory=".manager.SpanStorage" />
+
 </configure>
