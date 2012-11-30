@@ -6,6 +6,7 @@ from zope.publisher.interfaces.browser import IBrowserView
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 from plone.app.portlets.manager import ColumnPortletManagerRenderer
+from plone.app.portlets.browser.manage import ManageContextualPortlets
 from plone.app.portlets.browser.interfaces import IManageContextualPortletsView
 from plone.app.portlets.browser.editmanager import ContextualEditPortletManagerRenderer
 
@@ -15,11 +16,11 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from genweb.portlets.browser.interfaces import IHomepagePortletManager
 
 from plone.portlets.interfaces import IPortletManager
-from plone.portlets.interfaces import IPortletManagerRenderer
+
 from zope.annotation.interfaces import IAttributeAnnotatable
 from zope.annotation.interfaces import IAnnotations
 
-SPAN_KEY = 'genweb.portlets.span'
+SPAN_KEY = 'genweb.portlets.span.'
 
 
 class GenwebPortletRenderer(ColumnPortletManagerRenderer):
@@ -40,8 +41,12 @@ class gwContextualEditPortletManagerRenderer(ContextualEditPortletManagerRendere
 
     template = ViewPageTemplateFile('templates/edit-manager-contextual.pt')
 
+
+class gwManageContextualPortlets(ManageContextualPortlets):
+    """ Define our very own view for manage portlets """
+
     def getValue(self, manager):
-        portletManager = getUtility(IPortletManager, manager)
+        portletManager = getUtility(IPortletManager, name=manager)
         spanstorage = getMultiAdapter((self.context, portletManager), ISpanStorage)
         return spanstorage.span
 
@@ -59,19 +64,21 @@ class SpanStorage(object):
 
     def __init__(self, context, manager):
         self.context = context
+        self.manager = manager
+        self.key_id = SPAN_KEY + manager.__name__
 
         annotations = IAnnotations(context)
-        self._span = annotations.setdefault(SPAN_KEY, False)
+        self._span = annotations.setdefault(self.key_id, '')
 
     def get_span(self):
         annotations = IAnnotations(self.context)
-        self._span = annotations.setdefault(SPAN_KEY, False)
+        self._span = annotations.setdefault(self.key_id, '')
         return self._span
 
     def set_span(self, value):
         annotations = IAnnotations(self.context)
-        annotations.setdefault(SPAN_KEY, value)
-        annotations[SPAN_KEY] = value
+        annotations.setdefault(self.key_id, value)
+        annotations[self.key_id] = value
 
     span = property(get_span, set_span)
 
@@ -86,5 +93,8 @@ class setPortletHomeManagerSpan(BrowserView):
         portletManager = getUtility(IPortletManager, manager)
         spanstorage = getMultiAdapter((self.context[homepage_id], portletManager), ISpanStorage)
         spanstorage.span = span
+        self.request.RESPONSE.setStatus('200')
+        self.request.RESPONSE.setHeader('Content-type', 'application/json')
+        return '{"status": "Saved!"}'
         # manportview = getMultiAdapter((self.context, self.request), name='manage-homeportlets')
         # renderer = getMultiAdapter((self.context[homepage_id], self.request, manportview, portletManager), IPortletManagerRenderer)

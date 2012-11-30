@@ -16,10 +16,10 @@
           $form.find('input[name=":action"]').val($a.attr('href'))
           $form.submit();
         });
-        $('.editable').bind('keyup', function(event) {
+        $('.editable').bind('change', function(event) {
           $('#kss-spinner').show()
-          event.preventDefault()
-          event.stopPropagation()
+          // event.preventDefault()
+          // event.stopPropagation()
           data = {'manager': $(this).data()['manager'],
                   'contextId': $(this).data()['contextId'],
                   'span': $(this).val()}
@@ -36,7 +36,6 @@
                 $('#kss-spinner').hide();
             }
           });
-          console.log("elooo")
         })
       });
     </script>
@@ -113,12 +112,13 @@
                   <div class="span3">
                     <div class="clearfix">
                       <h3 class="pull-left">Columna 1</h3>
-                      <div class="input-prepend pull-right clearfix">
+                      <div class="input-prepend pull-right clearfix"
+                           tal:define="manager_name string:genweb.portlets.HomePortletManager3">
                         <span class="add-on">span</span>
                         <input class="editable" type="text" placeholder="4" style="width: 10px;"
-                               data-manager="genweb.portlets.HomePortletManager3"
-                               tal:attributes="data-context-id context/id;">
-                                               <!-- value python:view.getValue('genweb.portlets.HomePortletManager3')"> -->
+                               tal:attributes="data-context-id context/id;
+                                               data-manager manager_name;
+                                               value python:view.getValue(manager_name)">
                       </div>
                     </div>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager3" />
@@ -126,9 +126,13 @@
                   <div class="span3">
                     <div class="clearfix">
                       <h3 class="pull-left">Columna 2</h3>
-                      <div class="input-prepend pull-right clearfix">
+                      <div class="input-prepend pull-right clearfix"
+                           tal:define="manager_name string:genweb.portlets.HomePortletManager4">
                         <span class="add-on">span</span>
-                        <input type="text" placeholder="4" style="width: 10px;">
+                        <input class="editable" type="text" placeholder="4" style="width: 10px;"
+                               tal:attributes="data-context-id context/id;
+                                               data-manager manager_name;
+                                               value python:view.getValue(manager_name)">
                       </div>
                     </div>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager4" />
@@ -136,9 +140,13 @@
                   <div class="span3">
                     <div class="clearfix">
                       <h3 class="pull-left">Columna 3</h3>
-                      <div class="input-prepend pull-right clearfix">
+                      <div class="input-prepend pull-right clearfix"
+                           tal:define="manager_name string:genweb.portlets.HomePortletManager5">
                         <span class="add-on">span</span>
-                        <input type="text" placeholder="4" style="width: 10px;">
+                        <input class="editable" type="text" placeholder="4" style="width: 10px;"
+                               tal:attributes="data-context-id context/id;
+                                               data-manager manager_name;
+                                               value python:view.getValue(manager_name)">
                       </div>
                     </div>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager5" />
@@ -146,9 +154,13 @@
                   <div class="span3">
                     <div class="clearfix">
                       <h3 class="pull-left">Columna 4</h3>
-                      <div class="input-prepend pull-right clearfix">
+                      <div class="input-prepend pull-right clearfix"
+                           tal:define="manager_name string:genweb.portlets.HomePortletManager6">
                         <span class="add-on">span</span>
-                        <input type="text" placeholder="4" style="width: 10px;">
+                        <input class="editable" type="text" placeholder="4" style="width: 10px;"
+                               tal:attributes="data-context-id context/id;
+                                               data-manager manager_name;
+                                               value python:view.getValue(manager_name)">
                       </div>
                     </div>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager6" />
@@ -159,9 +171,13 @@
                   <div class="span3">
                     <div class="clearfix">
                       <h3 class="pull-left">Columna 1</h3>
-                      <div class="input-prepend pull-right clearfix">
+                      <div class="input-prepend pull-right clearfix"
+                           tal:define="manager_name string:genweb.portlets.HomePortletManager7">
                         <span class="add-on">span</span>
-                        <input type="text" placeholder="4" style="width: 10px;">
+                        <input class="editable" type="text" placeholder="4" style="width: 10px;"
+                               tal:attributes="data-context-id context/id;
+                                               data-manager manager_name;
+                                               value python:view.getValue(manager_name)">
                       </div>
                     </div>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager7" />
@@ -169,9 +185,13 @@
                   <div class="span3">
                     <div class="clearfix">
                       <h3 class="pull-left">Columna 2</h3>
-                      <div class="input-prepend pull-right clearfix">
+                      <div class="input-prepend pull-right clearfix"
+                           tal:define="manager_name string:genweb.portlets.HomePortletManager8">
                         <span class="add-on">span</span>
-                        <input type="text" placeholder="4" style="width: 10px;">
+                        <input class="editable" type="text" placeholder="4" style="width: 10px;"
+                               tal:attributes="data-context-id context/id;
+                                               data-manager manager_name;
+                                               value python:view.getValue(manager_name)">
                       </div>
                     </div>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager8" />
@@ -179,9 +199,13 @@
                   <div class="span3">
                     <div class="clearfix">
                       <h3 class="pull-left">Columna 3</h3>
-                      <div class="input-prepend pull-right clearfix">
+                      <div class="input-prepend pull-right clearfix"
+                           tal:define="manager_name string:genweb.portlets.HomePortletManager9">
                         <span class="add-on">span</span>
-                        <input type="text" placeholder="4" style="width: 10px;">
+                        <input class="editable" type="text" placeholder="4" style="width: 10px;"
+                               tal:attributes="data-context-id context/id;
+                                               data-manager manager_name;
+                                               value python:view.getValue(manager_name)">
                       </div>
                     </div>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager9" />
@@ -189,9 +213,13 @@
                   <div class="span3">
                     <div class="clearfix">
                       <h3 class="pull-left">Columna 4</h3>
-                      <div class="input-prepend pull-right clearfix">
+                      <div class="input-prepend pull-right clearfix"
+                           tal:define="manager_name string:genweb.portlets.HomePortletManager10">
                         <span class="add-on">span</span>
-                        <input type="text" placeholder="4" style="width: 10px;">
+                        <input class="editable" type="text" placeholder="4" style="width: 10px;"
+                               tal:attributes="data-context-id context/id;
+                                               data-manager manager_name;
+                                               value python:view.getValue(manager_name)">
                       </div>
                     </div>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager10" />
@@ -203,113 +231,11 @@
         </div>
       </div>
     </section>
-<!--
-          <div id="portal-column-content" class="span9">
-            <h2 i18n:translate="footer-portlet-b">Fila element interactiu</h2>
-            <span tal:replace="structure provider:genweb.portlets.HomePortletManager3" />
-
-            <div class="row-fluid">
-              <div class="span4">
-                <div class="portlet portlet-noticies">
-                  <h2>Actualitat UPC <i class="icon-upc large-icon pull-right"></i></h2>
-                  <ul class="list-portlet">
-                    <li>
-                      <a href="#">Lorem ipsum dolor sit amet.</a>
-                      <time class="smaller">27-11-2012</time>
-                    </li>
-                    <li>
-                      <a href="#">Ut enim ad minim, quis nostrud. <img alt="(obriu en finestra nova)" src="img/blank_blau.png" class="img_blank"></a>
-                      <time class="smaller">26-11-2012</time>
-
-                    </li>
-                    <li>
-                      <a href="#">Sint occaecat cupidatat non proident. <img alt="(obriu en finestra nova)" src="img/blank_blau.png" class="img_blank"></a>
-                      <time class="smaller">25-11-2012</time>
-                    </li>
-                    <li>
-                      <a href="#">Duis aute irure dolor in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</a>
-                      <time class="smaller">23-11-2012</time>
-                    </li>
-                    <li>
-                      <a href="#">Nostrud exercitation ullamco laboris nisi ut aliquip.</a>
-                      <time class="smaller">23-11-2012</time>
-                    </li>
-                  </ul>
-                  <a href="#" class="portlet-footer">Sala de Premsa <img alt="(obriu en finestra nova)" src="img/blank_blau.png" class="img_blank"></a>
-                </div>
-              </div>
-
-              <div class="span4">
-                <div class="portlet portlet-noticies">
-                  <h2>Notícies <i class="icon-news large-icon pull-right"></i></h2>
-                  <ul class="list-portlet">
-                    <li>
-                      <a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
-                      <time class="smaller">27-11-2012</time>
-                    </li>
-                    <li>
-                      <a href="#">Ut enim ad minim veniam, quis nostrud. <img alt="(obriu en finestra nova)" src="img/blank_blau.png" class="img_blank"></a>
-                      <time class="smaller">26-11-2012</time>
-
-                    </li>
-                    <li>
-                      <a href="#">Excepteur sint occaecat cupidatat non proident. <img alt="(obriu en finestra nova)" src="img/blank_blau.png" class="img_blank"></a>
-                      <time class="smaller">25-11-2012</time>
-                    </li>
-                    <li>
-                      <a href="#">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</a>
-                      <time class="smaller">23-11-2012</time>
-                    </li>
-                    <li>
-                      <a href="#">Quis nostrud exercitation ullamco laboris nisi ut aliquip.</a>
-                      <time class="smaller">23-11-2012</time>
-                    </li>
-                  </ul>
-                  <a href="#" class="portlet-footer"><i class="icon-rss"></i> Més notícies</a>
-                </div>
-              </div>
-
-              <div class="span4">
-                <div class="portlet portlet-esdeveniments">
-                  <h2>Agenda <i class="icon-calendar large-icon pull-right"></i></h2>
-                  <ul class="unstyled">
-                    <li>
-                      <a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</a>
-                      <time class="smaller" datetime="2013-09-27">27 <abbr rel="tooltip" data-placement="left" data-original-title="setembre">set.</abbr></time>
-                    </li>
-                    <li>
-                      <a href="#">Ut enim ad minim veniam, quis nostrud. <img alt="(obriu en finestra nova)" src="img/blank_blau.png" class="img_blank"></a>
-                      <time class="smaller" datetime="2013-09-27">27 <abbr rel="tooltip" data-placement="left" data-original-title="setembre">set.</abbr></time>
-
-                    </li>
-                    <li>
-                      <a href="#">Excepteur sint occaecat cupidatat non proident. <img alt="(obriu en finestra nova)" src="img/blank_blau.png" class="img_blank"></a>
-                      <time class="smaller" datetime="2013-09-27">27 <abbr rel="tooltip" data-placement="left" data-original-title="setembre">set.</abbr></time>
-                    </li>
-                    <li>
-                      <a href="#">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</a>
-                      <time class="smaller" datetime="2013-09-27">27 <abbr rel="tooltip" data-placement="left" data-original-title="setembre">set.</abbr></time>
-                    </li>
-                    <li>
-                      <a href="#">Quis nostrud exercitation ullamco laboris nisi ut aliquip.</a>
-                      <time class="smaller" datetime="2013-09-27">27 <abbr rel="tooltip" data-placement="left" data-original-title="setembre">set.</abbr></time>
-                    </li>
-                  </ul>
-                  <a href="#" class="portlet-footer">Més esdeveniments</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section> -->
   </div>
 
         <div metal:fill-slot="portlets_two_slot">
             <tal:comment tal:replace="nothing">get rid of the left hand column portlets to avoid confusion</tal:comment>
         </div>
-
 
     </body>
 </html>

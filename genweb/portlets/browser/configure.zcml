@@ -10,7 +10,7 @@
     <browser:page
         name="manage-homeportlets"
         for="plone.portlets.interfaces.ILocalPortletAssignable"
-        class="plone.app.portlets.browser.manage.ManageContextualPortlets"
+        class="genweb.portlets.browser.manager.gwManageContextualPortlets"
         template="templates/managehomeportlets.pt"
         permission="plone.app.portlets.ManagePortlets"
     />
