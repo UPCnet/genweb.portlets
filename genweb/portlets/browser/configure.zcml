@@ -46,4 +46,9 @@
 
     <adapter factory=".manager.SpanStorage" />
 
+    <browser:resource
+        name="gw-manage-portlets.js"
+        file="gw-manage-portlets.js"
+        />
+
 </configure>

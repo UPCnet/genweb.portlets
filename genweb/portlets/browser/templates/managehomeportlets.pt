@@ -6,38 +6,8 @@
       i18n:domain="genweb.portlets">
 <head>
   <div metal:fill-slot="javascript_head_slot" tal:omit-tag="">
-    <script>
-      $(document).ready(function() {
-        $('#gwportletselector a').bind('click', function(event) {
-          event.preventDefault()
-          event.stopPropagation()
-          $a = $(event.target)
-          $form = $('#portletselectorform')
-          $form.find('input[name=":action"]').val($a.attr('href'))
-          $form.submit();
-        });
-        $('.editable').bind('change', function(event) {
-          $('#kss-spinner').show()
-          // event.preventDefault()
-          // event.stopPropagation()
-          data = {'manager': $(this).data()['manager'],
-                  'contextId': $(this).data()['contextId'],
-                  'span': $(this).val()}
-          $.ajax({
-            url: portal_url + "/@@set-portlethomemanager-span",
-            data: data,
-            type: 'POST',
-            success: function(data){
-                console.log("saved")
-                $('#kss-spinner').hide();
-            },
-            error: function(){
-                console.log("error")
-                $('#kss-spinner').hide();
-            }
-          });
-        })
-      });
+    <script type="text/javascript"
+      tal:attributes="src string:${context/absolute_url}/++resource++gw-manage-portlets.js">
     </script>
 
     <script type="text/javascript"

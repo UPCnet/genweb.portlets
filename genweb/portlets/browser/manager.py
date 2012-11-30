@@ -30,10 +30,6 @@ class GenwebPortletRenderer(ColumnPortletManagerRenderer):
     adapts(Interface, IDefaultBrowserLayer, IBrowserView, IHomepagePortletManager)
     template = ViewPageTemplateFile('templates/renderer.pt')
 
-    def prova(self):
-        #import ipdb;ipdb.set_trace()
-        pass
-
 
 class gwContextualEditPortletManagerRenderer(ContextualEditPortletManagerRenderer):
     """Render a portlet manager in edit mode for contextual portlets"""
@@ -84,7 +80,8 @@ class SpanStorage(object):
 
 
 class setPortletHomeManagerSpan(BrowserView):
-    """ View that stores the span number assigned to this portletManager for this context
+    """ View that stores the span number assigned to this portletManager for
+        this context.
     """
     def __call__(self):
         manager = self.request.form['manager']
@@ -96,5 +93,3 @@ class setPortletHomeManagerSpan(BrowserView):
         self.request.RESPONSE.setStatus('200')
         self.request.RESPONSE.setHeader('Content-type', 'application/json')
         return '{"status": "Saved!"}'
-        # manportview = getMultiAdapter((self.context, self.request), name='manage-homeportlets')
-        # renderer = getMultiAdapter((self.context[homepage_id], self.request, manportview, portletManager), IPortletManagerRenderer)
