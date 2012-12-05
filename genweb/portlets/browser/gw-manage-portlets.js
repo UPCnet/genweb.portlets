@@ -24,9 +24,11 @@ $(document).ready(function() {
       type: 'POST',
       success: function(data){
           $('#kss-spinner').hide();
+          alertify.success("Configuració guardada.");
       },
       error: function(){
           $('#kss-spinner').hide();
+          alertify.error("Error al guardar la configuració.");
       }
     });
   });

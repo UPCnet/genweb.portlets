@@ -14,14 +14,14 @@
       tal:attributes="src string:${context/absolute_url}/++resource++manage-portlets.js">
     </script>
 
-    <!-- <script type="text/javascript"
+    <script type="text/javascript"
       tal:attributes="src string:${context/absolute_url}/++genweb++static/js/alertify.min.js">
-    </script> -->
+    </script>
   </div>
-<!--   <div metal:fill-slot="style_slot" tal:omit-tag="">
+  <div metal:fill-slot="style_slot" tal:omit-tag="">
     <link rel="stylesheet"
       tal:attributes="href string:${context/absolute_url}/++genweb++static/css/alertify.css">
-  </div> -->
+  </div>
 </head>
 
 <body class="manage-homeportlets">
