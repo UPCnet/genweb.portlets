@@ -12,7 +12,6 @@ $(document).ready(function() {
 
   // Call the ws that stores the span value given a portletManager
   $('.editable').bind('change', function(event) {
-    $('#kss-spinner').show();
     // event.preventDefault()
     // event.stopPropagation()
     data = {'manager': $(this).data()['manager'],
@@ -23,11 +22,9 @@ $(document).ready(function() {
       data: data,
       type: 'POST',
       success: function(data){
-          $('#kss-spinner').hide();
           alertify.success("Configuració guardada.");
       },
       error: function(){
-          $('#kss-spinner').hide();
           alertify.error("Error al guardar la configuració.");
       }
     });
