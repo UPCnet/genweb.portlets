@@ -54,7 +54,7 @@
                                 data-portlethash portlet/hash;
                                 data-viewname view/view_name;">
                 <div class="portletHeader clearfix box box-gradient padding0" tal:define="authenticator context/@@authenticator/authenticator">
-                    <strong style="display:inline-block; padding:2px 0 0 4px;"><a class="" tal:omit-tag="not:portlet/editview"
+                    <strong tal:omit-tag="not:portlet/editview"
                        tal:attributes="href string:${portlet/editview}?referer=${view/url_quote_referer}"
                        tal:content="portlet/title" /></strong>        
                     <span class="managedPortletActions pull-right btn-group">
