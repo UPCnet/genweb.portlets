@@ -24,6 +24,17 @@
         layer="genweb.portlets.browser.interfaces.IGenwebPortlets"
         />
 
+    <!-- Modify template to make regular portlets work -->
+    <browser:page
+        for="plone.portlets.interfaces.ILocalPortletAssignable"
+        name="manage-portlets"
+        class="plone.app.portlets.browser.manage.ManageContextualPortlets"
+        template="templates/manage-contextual.pt"
+        permission="plone.app.portlets.ManagePortlets"
+        layer="genweb.portlets.browser.interfaces.IGenwebPortlets"
+        />
+
+    <!-- Helper view to set spans to portlets managers for a given context -->
     <browser:page
         for="*"
         name="set-portlethomemanager-span"
