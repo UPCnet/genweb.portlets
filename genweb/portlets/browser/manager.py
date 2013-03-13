@@ -10,15 +10,21 @@ from plone.app.portlets.browser.manage import ManageContextualPortlets
 from plone.app.portlets.browser.interfaces import IManageContextualPortletsView
 from plone.app.portlets.browser.editmanager import ContextualEditPortletManagerRenderer
 
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from genweb.portlets.browser.interfaces import IHomepagePortletManager
+from genweb.core.interfaces import IHomePage
+from genweb.core.utils import pref_lang
 
 from plone.portlets.interfaces import IPortletManager
 
 from zope.annotation.interfaces import IAttributeAnnotatable
 from zope.annotation.interfaces import IAnnotations
+
+from Acquisition import aq_inner
 
 SPAN_KEY = 'genweb.portlets.span.'
 
@@ -83,12 +89,28 @@ class setPortletHomeManagerSpan(BrowserView):
     """ View that stores the span number assigned to this portletManager for
         this context.
     """
+
+    def getPortletContainer(self):
+        context = aq_inner(self.context)
+        container = context
+
+        # Portlet container will be in the context,
+        # Except in the portal root, when we look for an alternative
+        if IPloneSiteRoot.providedBy(self.context):
+            pc = getToolByName(context, 'portal_catalog')
+            result = pc.searchResults(object_provides=IHomePage.__identifier__,
+                                      Language=pref_lang())
+            if result:
+                # Return the object without forcing a getObject()
+                container = getattr(context, result[0].id, context)
+        return container
+
     def __call__(self):
         manager = self.request.form['manager']
         span = self.request.form['span']
-        homepage_id = self.request.form['contextId']
+        portlet_container = self.getPortletContainer()
         portletManager = getUtility(IPortletManager, manager)
-        spanstorage = getMultiAdapter((self.context[homepage_id], portletManager), ISpanStorage)
+        spanstorage = getMultiAdapter((portlet_container, portletManager), ISpanStorage)
         spanstorage.span = span
         self.request.RESPONSE.setStatus('200')
         self.request.RESPONSE.setHeader('Content-type', 'application/json')
