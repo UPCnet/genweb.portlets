@@ -1,19 +1,19 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0'
+version = '1.2'
+
+README = open("README.rst").read()
+HISTORY = open(os.path.join("docs", "HISTORY.rst")).read()
 
 setup(name='genweb.portlets',
       version=version,
       description="Genweb reusable portlets",
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
-      # Get more strings from
-      # http://pypi.python.org/pypi?%3Aaction=list_classifiers
+      long_description=README + "\n" + HISTORY,
       classifiers=[
-        "Framework :: Plone",
-        "Programming Language :: Python",
-        ],
+          "Framework :: Plone",
+          "Programming Language :: Python",
+      ],
       keywords='',
       author='UPCnet Plone Team',
       author_email='plone.team@upcnet.es',
@@ -23,18 +23,12 @@ setup(name='genweb.portlets',
       namespace_packages=['genweb'],
       include_package_data=True,
       zip_safe=False,
-      extras_require = {
-          'test': [
-              'plone.app.testing',
-          ]
-      },
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
       # -*- Entry points: -*-
-
       [z3c.autoinclude.plugin]
       target = plone
       """,
