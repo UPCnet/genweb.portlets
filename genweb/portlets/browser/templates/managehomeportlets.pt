@@ -14,9 +14,6 @@
       tal:attributes="src string:${context/absolute_url}/++resource++manage-portlets.js">
     </script>
 
-    <script type="text/javascript"
-      tal:attributes="src string:${context/absolute_url}/++genweb++static/js/alertify.min.js">
-    </script>
   </div>
   <div metal:fill-slot="style_slot" tal:omit-tag="">
     <link rel="stylesheet"
