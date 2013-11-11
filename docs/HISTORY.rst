@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.2.2 (unreleased)
+1.2.2 (2013-11-11)
 ------------------
 
-- Nothing changed yet.
-
+* Remove alertify, will live in main_template [Carles Bruguera]
 
 1.2.1 (2013-11-11)
 ------------------
