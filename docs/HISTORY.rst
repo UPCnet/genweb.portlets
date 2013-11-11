@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.2.1 (2013-11-11)
+------------------
+
+* Call span view relative to the context [Carles Bruguera]
+
 1.2 (2013-06-10)
 ----------------
 
