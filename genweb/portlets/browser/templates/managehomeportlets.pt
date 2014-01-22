@@ -3,7 +3,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       metal:use-macro="context/main_template/macros/master"
-      i18n:domain="genweb.portlets">
+      i18n:domain="genweb">
 <head>
   <div metal:fill-slot="javascript_head_slot" tal:omit-tag="">
     <script type="text/javascript"
@@ -78,7 +78,7 @@
               <div id="portal-column-content" class="span10">
                 <div class="row-fluid">
                   <div class="span12">
-                    <h2 i18n:translate="homeportlets_title_2">1a Fila</h2>
+                    <h2 class="liniaDalt" i18n:translate="homeportlets_title_2">1a Fila</h2>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager2" />
                   </div>
                 </div>
@@ -200,6 +200,7 @@
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager10" />
                   </div>
                 </div>
+                <div class="liniaDalt"/>
               </div>
             </div>
           </div>
