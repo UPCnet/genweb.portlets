@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   // Use bootstrap classes for add portlet dropdown
-  $('#gwportletselector a').bind('click', function(event) {
+  $('#portal-columns').delegate('#gwportletselector a', 'click', function(event) {
     event.preventDefault();
     event.stopPropagation();
     $a = $(event.target);
