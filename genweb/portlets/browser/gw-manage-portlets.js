@@ -15,6 +15,7 @@ $(document).ready(function() {
     // event.preventDefault()
     // event.stopPropagation()
     data = {'manager': $(this).data()['manager'],
+            'size': $(this).data()['size'],
             'contextId': $(this).data()['contextId'],
             'span': $(this).val()};
     $.ajax({
