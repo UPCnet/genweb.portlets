@@ -1,11 +1,13 @@
 Changelog
 =========
 
-1.2.3 (unreleased)
+1.2.3 (2014-02-24)
 ------------------
 
-- Nothing changed yet.
-
+* Merge branch 'develop' of github.com:UPCnet/genweb.portlets into develop [Victor Fernandez de Alba]
+* Fix nginx fail to update portlets block on portlet deletion [Victor Fernandez de Alba]
+* Canviar el literar del botó "return" per "Torna" i fer que porti a la pàgina principal [Roberto Diaz]
+* added button translation [Roberto Diaz]
 
 1.2.2 (2013-11-11)
 ------------------
