@@ -6,14 +6,8 @@
           tal:attributes="action view/context_url">
         <input type="hidden" name="referer" tal:attributes="value view/referer" />
 
-        <label class="hiddenStructure"
-               i18n:translate="label_add_portlet">
-            Add portlet
-        </label>
-
-        <label class="hiddenStructure">Afegeix un portlet</label>
         <div class="btn-group">
-          <button class="btn dropdown-toggle" data-toggle="dropdown">
+          <button class="btn dropdown-toggle btn-primary" data-toggle="dropdown">
             <tal:addportlet i18n:translate="label_add_portlet_ellipsis">
               Add portlet&hellip;
             </tal:addportlet>
@@ -40,10 +34,10 @@
     </form>
 </div>
 
-<div metal:define-macro="current-portlets-list" class="portletAssignments"
-    i18n:domain="plone">
+<div metal:define-macro="current-portlets-list" class="portletAssignments" tal:define="portlet view/portlets"
+    i18n:domain="plone" tal:condition="portlet">
 
-    <h4 i18n:translate="heading_portlets_assigned_here">
+    <h4 tal:condition="portlet" i18n:translate="heading_portlets_assigned_here">
         Portlets assigned here
     </h4>
 
@@ -60,7 +54,7 @@
                          tal:content="portlet/title" />
                       <tal:nolink condition="not:portlet/editview" content="portlet/title"></tal:nolink>
                     </strong>
-                    <span class="managedPortletActions pull-right btn-group">
+                    <div class="managedPortletActions pull-right btn-group">
 
                       <form class="portlet-action align-right inline-block margin0" method="POST" tal:attributes="action portlet/show_url"
                           tal:condition="not: portlet/visible">
@@ -107,10 +101,10 @@
                         <input type="hidden" name="name" tal:attributes="value portlet/name" />
                         <input type="hidden" name="viewname" tal:attributes="value view/view_name" />
                         <span tal:replace="structure authenticator"/>
-                        <button class="btn btn-mini btn-danger" i18n:attributes="title" title="Remove" type="submit"
+                        <button class="btn btn-mini btn-danger fa-lg" i18n:attributes="title" title="Remove" type="submit"
                           tal:attributes="name string:${portlet/name}-remove"><i class="fa fa-times"></i></button>
                       </form>
-                    </span>
+                    </div>
                 </div>
             </div>
         </tal:block>

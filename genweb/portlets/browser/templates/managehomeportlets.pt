@@ -60,40 +60,39 @@
         i18n:translate="manage_portlets_footer">Manage home portlets</h1>
 
     <p>
-     <a href=""
-           class="link-parent"
-           tal:attributes="href string:${context/portal_url}"
-           i18n:translate="return_to_view">
-        Return
+      <a href="" class="link-parent btn btn-success">
+        <span
+          tal:attributes="href string:${context/portal_url}"
+          i18n:translate="return_to_view">Return</span>
      </a>
     </p>
 
     <section id="content">
-      <div class="container">
+      <div>
         <div id="portal-columns" class="row">
           <div class="col-md-12">
             <div class="row">
               <div id="portal-column-one" class="col-md-2">
                 <div class="panel panel-default">
-                  <div class="panel-heading"><h2 i18n:translate="homeportlets_title_1">Menu Lateral (GwL2)</h2></div>
+                  <div class="panel-heading"><h2 i18n:translate="homeportlets_title_1">Side Menu (GwL2)</h2></div>
                    <div class="panel-body">
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager1" />
                   </div>
                 </div>
               </div>
               <div id="portal-column-content" class="col-md-10">
-                <div class="row panel panel-default">
-                  <div class="panel-heading"><h2 i18n:translate="homeportlets_title_2">1a Fila</h2></div>
+                <div class="panel panel-default">
+                  <div class="panel-heading"><h2 i18n:translate="homeportlets_title_2">1st Row</h2></div>
                   <div class="panel-body">
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager2" />
                   </div>
                 </div>
-                <div class="row panel panel-default">
-                <div class="panel-heading"><h2 i18n:translate="homeportlets_title_2">2a Fila</h2></div>
+                <div class="panel panel-default">
+                <div class="panel-heading"><h2 i18n:translate="homeportlets_title_2">2nd Row</h2></div>
                 <div class="panel-body">
                   <div class="col-md-3">
                     <div class="clearfix">
-                      <h3>Columna 1</h3>
+                      <h3>Column 1</h3>
                       <div class="form-group">
                         <div class="input-group input-group-sm"
                              tal:define="manager_name string:genweb.portlets.HomePortletManager3">
@@ -132,7 +131,7 @@
                   </div>
                   <div class="col-md-3">
                     <div class="clearfix">
-                      <h3>Columna 2</h3>
+                      <h3>Column 2</h3>
                       <div class="form-group">
                         <div class="input-group input-group-sm"
                              tal:define="manager_name string:genweb.portlets.HomePortletManager4">
@@ -171,7 +170,7 @@
                   </div>
                   <div class="col-md-3">
                     <div class="clearfix">
-                      <h3>Columna 3</h3>
+                      <h3>Column 3</h3>
                       <div class="form-group">
                         <div class="input-group input-group-sm"
                              tal:define="manager_name string:genweb.portlets.HomePortletManager5">
@@ -210,7 +209,7 @@
                   </div>
                   <div class="col-md-3">
                     <div class="clearfix">
-                      <h3>Columna 4</h3>
+                      <h3>Column 4</h3>
                       <div class="form-group">
                         <div class="input-group input-group-sm"
                              tal:define="manager_name string:genweb.portlets.HomePortletManager6">
@@ -249,11 +248,12 @@
                   </div>
                 </div>
                 </div>
-                <div class="row panel panel-default">
-                  <div class="panel-heading"><h2 i18n:translate="homeportlets_title_2">3a Fila</h2></div>
+                <div class="panel panel-default">
+                  <div class="panel-heading"><h2 i18n:translate="homeportlets_title_2">3rd Row</h2></div>
+                  <div class="panel-body">
                   <div class="col-md-3">
                     <div class="clearfix">
-                      <h3>Columna 1</h3>
+                      <h3>Column 1</h3>
                       <div class="form-group">
                         <div class="input-group input-group-sm"
                              tal:define="manager_name string:genweb.portlets.HomePortletManager7">
@@ -292,7 +292,7 @@
                   </div>
                   <div class="col-md-3">
                     <div class="clearfix">
-                      <h3>Columna 2</h3>
+                      <h3>Column 2</h3>
                       <div class="form-group">
                         <div class="input-group input-group-sm"
                              tal:define="manager_name string:genweb.portlets.HomePortletManager8">
@@ -331,7 +331,7 @@
                   </div>
                   <div class="col-md-3">
                     <div class="clearfix">
-                      <h3>Columna 3</h3>
+                      <h3>Column 3</h3>
                       <div class="form-group">
                         <div class="input-group input-group-sm"
                              tal:define="manager_name string:genweb.portlets.HomePortletManager9">
@@ -370,7 +370,7 @@
                   </div>
                   <div class="col-md-3">
                     <div class="clearfix">
-                      <h3>Columna 4</h3>
+                      <h3>Column 4</h3>
                       <div class="form-group">
                         <div class="input-group input-group-sm"
                              tal:define="manager_name string:genweb.portlets.HomePortletManager10">
@@ -407,6 +407,7 @@
                     </div>
                     <span tal:replace="structure provider:genweb.portlets.HomePortletManager10" />
                   </div>
+                </div>
                 </div>
               </div>
             </div>
