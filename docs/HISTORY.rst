@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.2.4 (unreleased)
+1.2.4 (2014-03-13)
 ------------------
 
-- Nothing changed yet.
-
+* Fix manage home portlets alertify CSS and JS version [Victor Fernandez de Alba]
 
 1.2.3 (2014-02-24)
 ------------------
