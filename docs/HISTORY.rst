@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.2.5 (unreleased)
+1.2.5 (2014-03-24)
 ------------------
 
-- Nothing changed yet.
-
+* Index servers to UPCnet only [Victor Fernandez de Alba]
 
 1.2.4 (2014-03-13)
 ------------------
