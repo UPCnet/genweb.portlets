@@ -16,8 +16,8 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from genweb.portlets.browser.interfaces import IHomepagePortletManager
-from genweb.core.interfaces import IHomePage
-from genweb.core.utils import pref_lang
+from genweb.portlets.browser.interfaces import IHomePage
+from genweb.portlets.utils import pref_lang
 
 from plone.portlets.interfaces import IPortletManager
 
@@ -25,6 +25,8 @@ from zope.annotation.interfaces import IAttributeAnnotatable
 from zope.annotation.interfaces import IAnnotations
 
 from Acquisition import aq_inner
+
+import json
 
 SPAN_KEY = 'genweb.portlets.span.'
 
@@ -36,12 +38,82 @@ class GenwebPortletRenderer(ColumnPortletManagerRenderer):
     adapts(Interface, IDefaultBrowserLayer, IBrowserView, IHomepagePortletManager)
     template = ViewPageTemplateFile('templates/renderer.pt')
 
+    def get_grid_portlets(self):
+        unordered_portlets = self.allPortlets()
+
+        allportlets = {}
+        for portlet in unordered_portlets:
+            allportlets[portlet['hash']] = portlet
+
+        portletManager = getUtility(IPortletManager, name='genweb.portlets.HomePortletManager1')
+
+        if IPloneSiteRoot.providedBy(self.context):
+            homepage = self.context[self.context.default_page]
+            # TODO: Make it multilingual aware
+        else:
+            homepage = self.context
+
+        spanstorage = getMultiAdapter((homepage, portletManager), ISpanStorage)
+        if spanstorage.span:
+            positions = json.loads(spanstorage.span)
+            index = {}
+            # {1: [portlet1, portlet2]}
+            for portlet in positions:
+                index.setdefault(portlet['row'], [])
+                portlet_info = allportlets.get(portlet['id'], False)
+                if portlet_info:
+                    index[portlet['row']].append(dict(row=portlet['row'],
+                                                      col=portlet['col'],
+                                                      size_x=portlet['size_x'],
+                                                      size_y=portlet['size_y'],
+                                                      hash=portlet['id'],
+                                                      category=portlet_info['category'],
+                                                      available=portlet_info['available'],
+                                                      name=portlet_info['name'],
+                                                      assignment=portlet_info['assignment'],
+                                                      manager=portlet_info['manager'],
+                                                      renderer=portlet_info['renderer'],
+                                                      key=portlet_info['key']))
+            grid_portlets = []
+            for k in sorted(index.keys()):
+                grid_portlets.append(sorted(index[k], key=lambda x: x['col']))
+
+            return grid_portlets
+
 
 class gwContextualEditPortletManagerRenderer(ContextualEditPortletManagerRenderer):
     """Render a portlet manager in edit mode for contextual portlets"""
     adapts(Interface, IDefaultBrowserLayer, IManageContextualPortletsView, IHomepagePortletManager)
 
     template = ViewPageTemplateFile('templates/edit-manager-contextual.pt')
+
+    def get_position(self, portlet_hash):
+        portletManager = getUtility(IPortletManager, name='genweb.portlets.HomePortletManager1')
+
+        if IPloneSiteRoot.providedBy(self.context):
+            homepage = self.context[self.context.default_page]
+            # TODO: Make it multilingual aware
+        else:
+            homepage = self.context
+
+        spanstorage = getMultiAdapter((homepage, portletManager), ISpanStorage)
+        if spanstorage.span:
+            positions = json.loads(spanstorage.span)
+            for position in positions:
+                if position['id'] == portlet_hash:
+                    return position
+
+            # We have a new portlet in the house so update the annotation
+            positions.append(dict(id=portlet_hash, row=1, col=1, size_x=1, size_y=1))
+            spanstorage.span = json.dumps(positions)
+            # And return a faked one for this time only
+            return dict(row=1, col=1, size_x=1, size_y=1)
+
+        # Is the first portlet so create the annotation
+        spanstorage.span = json.dumps(dict(id=portlet_hash, row=1, col=1, size_x=1, size_y=1))
+
+        # And return a faked one for this time only
+        return dict(row=1, col=1, size_x=1, size_y=1)
 
 
 class gwManageContextualPortlets(ManageContextualPortlets):
@@ -56,6 +128,12 @@ class gwManageContextualPortlets(ManageContextualPortlets):
         portletManager = getUtility(IPortletManager, name=manager)
         spanstorage = getMultiAdapter((self.context, portletManager), IScreenTypeSpanStorage)
         return getattr(spanstorage, size)
+
+    def get_position(self, portlet_hash):
+        positions = self.getValue('genweb.portlets.HomePortletManager1')
+        for position in positions:
+            if position['id'] == portlet_hash:
+                return position
 
 
 class ISpanStorage(IAttributeAnnotatable):
@@ -176,13 +254,11 @@ class setPortletHomeManagerSpan(BrowserView):
         return container
 
     def __call__(self):
-        manager = self.request.form['manager']
-        size = self.request.form['size']
-        span = self.request.form['span']
+        position = self.request.form['position']
         portlet_container = self.getPortletContainer()
-        portletManager = getUtility(IPortletManager, manager)
-        spanstorage = getMultiAdapter((portlet_container, portletManager), IScreenTypeSpanStorage)
-        setattr(spanstorage, size, span)
+        portletManager = getUtility(IPortletManager, 'genweb.portlets.HomePortletManager1')
+        spanstorage = getMultiAdapter((portlet_container, portletManager), ISpanStorage)
+        spanstorage.span = position
         self.request.RESPONSE.setStatus('200')
         self.request.RESPONSE.setHeader('Content-type', 'application/json')
         return '{"status": "Saved!"}'

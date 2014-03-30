@@ -1,0 +1,10 @@
+<tal:div condition="view/available">
+    <a class="btn btn-default managePortletsFallback"
+       tal:attributes="href view/managePortletsURL">
+       <i class="fa fa-cog"></i>
+       <tal:adminPortlets i18n:domain="plone"
+                          i18n:translate="manage_homeportlets_link">
+                            Manage home page
+       </tal:adminPortlets>
+    </a>
+</tal:div>

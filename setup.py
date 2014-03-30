@@ -25,7 +25,7 @@ setup(name='genweb.portlets',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          # -*- Extra requirements: -*-
+          'five.grok'
       ],
       entry_points="""
       # -*- Entry points: -*-

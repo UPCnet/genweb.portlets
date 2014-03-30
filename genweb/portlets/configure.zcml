@@ -3,12 +3,16 @@
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:grok="http://namespaces.zope.org/grok"
     i18n_domain="genweb.portlets">
 
     <five:registerPackage package="." initialize=".initialize" />
-    
+
     <include package=".browser" />
-   
+    <include package ="five.grok" />
+
+    <grok:grok package="." />
+
     <genericsetup:registerProfile
        name="default"
        title="Genweb Portlets"
@@ -16,16 +20,5 @@
        description="Genweb reusable portlets"
        provides="Products.GenericSetup.interfaces.EXTENSION"
        />
-    
-     <plone:portlet
-         name="genweb.portlets.portlets.rssvideoportlet"
-         interface=".rssvideoportlet.Irssvideoportlet"
-         assignment=".rssvideoportlet.Assignment"
-         view_permission="zope2.View"
-         edit_permission="cmf.ManagePortal"
-         renderer=".rssvideoportlet.Renderer"
-         addview=".rssvideoportlet.AddForm"
-         editview=".rssvideoportlet.EditForm"
-         />
 
 </configure>

@@ -14,12 +14,20 @@
       tal:attributes="src string:${context/absolute_url}/++resource++manage-portlets.js">
     </script>
 
+    <script type="text/javascript"
+      tal:attributes="src string:${context/absolute_url}/++resource++gridster.min.js">
+    </script>
+
   </div>
   <div metal:fill-slot="style_slot" tal:omit-tag="">
-    <link rel="stylesheet"
+<!--     <link rel="stylesheet"
       tal:attributes="href string:${context/absolute_url}/++genweb++static/css/alertify.core.css">
     <link rel="stylesheet"
-      tal:attributes="href string:${context/absolute_url}/++genweb++static/css/alertify.default.css">
+      tal:attributes="href string:${context/absolute_url}/++genweb++static/css/alertify.default.css"> -->
+    <link rel="stylesheet"
+      tal:attributes="href string:${context/absolute_url}/++resource++gridster.css">
+    <link rel="stylesheet"
+      tal:attributes="href string:${context/absolute_url}/++resource++gridportlets.css">
   </div>
 </head>
 
@@ -35,7 +43,7 @@
 
   <div metal:fill-slot="main">
 
-    <tal:warning tal:condition="plone_view/isDefaultPageInFolder">
+<!--     <tal:warning tal:condition="plone_view/isDefaultPageInFolder">
       <div class="alert alert-info"
            tal:attributes="class string:alert alert-warning">
             <button data-dismiss="alert" class="close" type="button">×</button>
@@ -54,7 +62,7 @@
                 </a>
             </tal:msg>
       </div>
-    </tal:warning>
+    </tal:warning> -->
 
     <h1 class="documentFirstHeading"
         i18n:translate="manage_portlets_footer">Manage home portlets</h1>
@@ -70,351 +78,20 @@
     <section id="content">
       <div>
         <div id="portal-columns" class="row">
-          <div class="col-md-12">
-            <div class="row">
-              <div id="portal-column-one" class="col-md-2">
-                <div class="panel panel-default">
-                  <div class="panel-heading"><h2 i18n:translate="homeportlets_title_1">Side Menu (GwL2)</h2></div>
-                   <div class="panel-body">
-                    <span tal:replace="structure provider:genweb.portlets.HomePortletManager1" />
-                  </div>
-                </div>
-              </div>
-              <div id="portal-column-content" class="col-md-10">
-                <div class="panel panel-default">
-                  <div class="panel-heading"><h2 i18n:translate="homeportlets_title_2">1st Row</h2></div>
-                  <div class="panel-body">
-                    <span tal:replace="structure provider:genweb.portlets.HomePortletManager2" />
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                <div class="panel-heading"><h2 i18n:translate="homeportlets_title_2">2nd Row</h2></div>
-                <div class="panel-body">
-                  <div class="col-md-3">
-                    <div class="clearfix">
-                      <h3>Column 1</h3>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager3">
-                          <span class="input-group-addon">phones</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:phone;
-                                                 value python:view.get_span_value(manager_name, 'phone')">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager3">
-                          <span class="input-group-addon">tablets</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:tablet;
-                                                 value python:view.get_span_value(manager_name, 'tablet')">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager3">
-                          <span class="input-group-addon">desktop</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:desktop;
-                                                 value python:view.get_span_value(manager_name, 'desktop')">
-                        </div>
-                      </div>
-                    </div>
-                    <span tal:replace="structure provider:genweb.portlets.HomePortletManager3" />
-                  </div>
-                  <div class="col-md-3">
-                    <div class="clearfix">
-                      <h3>Column 2</h3>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager4">
-                          <span class="input-group-addon">phones</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:phone;
-                                                 value python:view.get_span_value(manager_name, 'phone')">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager4">
-                          <span class="input-group-addon">tablets</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:tablet;
-                                                 value python:view.get_span_value(manager_name, 'tablet')">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager4">
-                          <span class="input-group-addon">desktop</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:desktop;
-                                                 value python:view.get_span_value(manager_name, 'desktop')">
-                        </div>
-                      </div>
-                    </div>
-                    <span tal:replace="structure provider:genweb.portlets.HomePortletManager4" />
-                  </div>
-                  <div class="col-md-3">
-                    <div class="clearfix">
-                      <h3>Column 3</h3>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager5">
-                          <span class="input-group-addon">phones</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:phone;
-                                                 value python:view.get_span_value(manager_name, 'phone')">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager5">
-                          <span class="input-group-addon">tablets</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:tablet;
-                                                 value python:view.get_span_value(manager_name, 'tablet')">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager5">
-                          <span class="input-group-addon">desktop</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:desktop;
-                                                 value python:view.get_span_value(manager_name, 'desktop')">
-                        </div>
-                      </div>
-                    </div>
-                    <span tal:replace="structure provider:genweb.portlets.HomePortletManager5" />
-                  </div>
-                  <div class="col-md-3">
-                    <div class="clearfix">
-                      <h3>Column 4</h3>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager6">
-                          <span class="input-group-addon">phones</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:phone;
-                                                 value python:view.get_span_value(manager_name, 'phone')">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager6">
-                          <span class="input-group-addon">tablets</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:tablet;
-                                                 value python:view.get_span_value(manager_name, 'tablet')">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager6">
-                          <span class="input-group-addon">desktop</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:desktop;
-                                                 value python:view.get_span_value(manager_name, 'desktop')">
-                        </div>
-                      </div>
-                    </div>
-                    <span tal:replace="structure provider:genweb.portlets.HomePortletManager6" />
-                  </div>
-                </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading"><h2 i18n:translate="homeportlets_title_2">3rd Row</h2></div>
-                  <div class="panel-body">
-                  <div class="col-md-3">
-                    <div class="clearfix">
-                      <h3>Column 1</h3>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager7">
-                          <span class="input-group-addon">phones</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:phone;
-                                                 value python:view.get_span_value(manager_name, 'phone')">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager7">
-                          <span class="input-group-addon">tablets</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:tablet;
-                                                 value python:view.get_span_value(manager_name, 'tablet')">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager7">
-                          <span class="input-group-addon">desktop</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:desktop;
-                                                 value python:view.get_span_value(manager_name, 'desktop')">
-                        </div>
-                      </div>
-                    </div>
-                    <span tal:replace="structure provider:genweb.portlets.HomePortletManager7" />
-                  </div>
-                  <div class="col-md-3">
-                    <div class="clearfix">
-                      <h3>Column 2</h3>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager8">
-                          <span class="input-group-addon">phones</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:phone;
-                                                 value python:view.get_span_value(manager_name, 'phone')">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager8">
-                          <span class="input-group-addon">tablets</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:tablet;
-                                                 value python:view.get_span_value(manager_name, 'tablet')">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager8">
-                          <span class="input-group-addon">desktop</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:desktop;
-                                                 value python:view.get_span_value(manager_name, 'desktop')">
-                        </div>
-                      </div>
-                    </div>
-                    <span tal:replace="structure provider:genweb.portlets.HomePortletManager8" />
-                  </div>
-                  <div class="col-md-3">
-                    <div class="clearfix">
-                      <h3>Column 3</h3>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager9">
-                          <span class="input-group-addon">phones</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:phone;
-                                                 value python:view.get_span_value(manager_name, 'phone')">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager9">
-                          <span class="input-group-addon">tablets</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:tablet;
-                                                 value python:view.get_span_value(manager_name, 'tablet')">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager9">
-                          <span class="input-group-addon">desktop</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:desktop;
-                                                 value python:view.get_span_value(manager_name, 'desktop')">
-                        </div>
-                      </div>
-                    </div>
-                    <span tal:replace="structure provider:genweb.portlets.HomePortletManager9" />
-                  </div>
-                  <div class="col-md-3">
-                    <div class="clearfix">
-                      <h3>Column 4</h3>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager10">
-                          <span class="input-group-addon">phones</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:phone;
-                                                 value python:view.get_span_value(manager_name, 'phone')">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager10">
-                          <span class="input-group-addon">tablets</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:tablet;
-                                                 value python:view.get_span_value(manager_name, 'tablet')">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="input-group input-group-sm"
-                             tal:define="manager_name string:genweb.portlets.HomePortletManager10">
-                          <span class="input-group-addon">desktop</span>
-                          <input class="form-control editable" type="text" placeholder="0" style="width: 30px;"
-                                 tal:attributes="data-context-id context/id;
-                                                 data-manager manager_name;
-                                                 data-size string:desktop;
-                                                 value python:view.get_span_value(manager_name, 'desktop')">
-                        </div>
-                      </div>
-                    </div>
-                    <span tal:replace="structure provider:genweb.portlets.HomePortletManager10" />
-                  </div>
-                </div>
-                </div>
+          <div id="portal-column-content" class="col-md-12">
+                <span tal:content="python:view.getValue('genweb.portlets.HomePortletManager1')" />
+
+            <div class="panel panel-default">
+              <div class="panel-heading"><h2 i18n:translate="homeportlets_title_1">1st Row</h2></div>
+              <div class="panel-body">
+                <span tal:replace="structure provider:genweb.portlets.HomePortletManager1" />
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
   </div>
 
         <div metal:fill-slot="portlets_two_slot">

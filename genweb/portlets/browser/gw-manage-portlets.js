@@ -30,4 +30,59 @@ $(document).ready(function() {
       }
     });
   });
+
+  $(".gridster ul").gridster({
+    widget_margins: [10, 10],
+    widget_base_dimensions: [140, 140],
+    max_cols: 6,
+    resize: {
+      enabled: true,
+      axes: ['x'],
+      stop: function(e, ui, $widget) {
+        data = {
+          position: JSON.stringify(this.serialize())
+        }
+        $.ajax({
+          url: document.getElementsByTagName('base')[0].href + "/@@set-portlethomemanager-span",
+          data: data,
+          type: 'POST',
+          success: function(data){
+              console.log('Guardada!');
+          },
+          error: function(){
+              console.log('Error!');
+          }
+        });
+      }
+    },
+    draggable: {
+      stop: function(event, ui) {
+        data = {
+          position: JSON.stringify(this.serialize())
+        }
+        $.ajax({
+          url: document.getElementsByTagName('base')[0].href + "/@@set-portlethomemanager-span",
+          data: data,
+          type: 'POST',
+          success: function(data){
+              console.log('Guardada!');
+          },
+          error: function(){
+              console.log('Error!');
+          }
+        });
+      }
+    },
+    serialize_params: function($w, wgd) {
+      return {
+        id: $($w).data().portlethash,
+        col: wgd.col,
+        row: wgd.row,
+        size_x: wgd.size_x,
+        size_y: wgd.size_y
+      };
+    }
+  });
+
+  var gridster = $(".gridster ul").gridster().data('gridster');
 });

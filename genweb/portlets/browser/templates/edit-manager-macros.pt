@@ -41,13 +41,20 @@
         Portlets assigned here
     </h4>
 
-    <div>
+    <div class="gridster">
+      <ul>
         <tal:block repeat="portlet view/portlets">
+          <li class="well" tal:define="position python:view.get_position(portlet['hash'])"
+              tal:attributes="data-row python:position['row'];
+                              data-col python:position['col'];
+                              data-sizex python:position['size_x'];
+                              data-sizey python:position['size_y'];
+                              data-portlethash portlet/hash;">
             <div tal:define="hiddenPortletClass python:not portlet['visible'] and 'blockedPortlet' or ''"
                 tal:attributes="class string:managedPortlet ${hiddenPortletClass};
                                 data-portlethash portlet/hash;
                                 data-viewname view/view_name;">
-                <div class="portletHeader clearfix well well-sm" tal:define="authenticator context/@@authenticator/authenticator">
+                <div class="portletHeader" tal:define="authenticator context/@@authenticator/authenticator">
                     <strong>
                       <a class="" tal:condition="portlet/editview"
                          tal:attributes="href string:${portlet/editview}?referer=${view/url_quote_referer}"
@@ -76,7 +83,7 @@
                           tal:attributes="name string:${portlet/name}-hide"><i class="fa fa-eye"></i></button>
                       </form>
 
-                      <form class="portlet-action align-right inline-block margin0" method="POST" tal:attributes="action portlet/up_url"
+<!--                       <form class="portlet-action align-right inline-block margin0" method="POST" tal:attributes="action portlet/up_url"
                           tal:condition="not:repeat/portlet/start">
                         <input type="hidden" name="referrer" tal:attributes="value view/url_quote_referer" />
                         <input type="hidden" name="name" tal:attributes="value portlet/name" />
@@ -94,7 +101,7 @@
                         <span tal:replace="structure authenticator"/>
                         <button class="btn btn-mini" title="Move down" i18n:attributes="title" type="submit"
                           tal:attributes="name string:${portlet/name}-down"><i class="fa fa-chevron-down"></i></button>
-                      </form>
+                      </form> -->
 
                       <form class="portlet-action delete align-right inline-block margin0" method="POST" tal:attributes="action portlet/delete_url">
                         <input type="hidden" name="referrer" tal:attributes="value view/url_quote_referer" />
@@ -107,7 +114,9 @@
                     </div>
                 </div>
             </div>
+          </li>
         </tal:block>
+      </ul>
     </div>
 
 </div>
