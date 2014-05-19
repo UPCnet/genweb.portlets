@@ -98,7 +98,10 @@ class setPortletHomeManagerSpan(BrowserView):
         # Except in the portal root, when we look for an alternative
         if IPloneSiteRoot.providedBy(self.context):
             pc = getToolByName(context, 'portal_catalog')
+            # Add the use case of mixin types of IHomepages. The main ones of a
+            # non PAM-enabled site and the possible inner ones.
             result = pc.searchResults(object_provides=IHomePage.__identifier__,
+                                      portal_type='Document',
                                       Language=pref_lang())
             if result:
                 # Return the object without forcing a getObject()
