@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.2.6 (unreleased)
+1.2.6 (2014-05-26)
 ------------------
 
-- Nothing changed yet.
-
+* Improve the query to the catalog for include some more use cases. [Victor Fernandez de Alba]
 
 1.2.5 (2014-03-24)
 ------------------
