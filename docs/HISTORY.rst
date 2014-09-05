@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.2.7 (unreleased)
+1.2.7 (2014-09-05)
 ------------------
 
-- Nothing changed yet.
-
+* Fix manifest [Victor Fernandez de Alba]
 
 1.2.6 (2014-05-26)
 ------------------
