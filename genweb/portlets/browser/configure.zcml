@@ -12,7 +12,7 @@
         for="plone.portlets.interfaces.ILocalPortletAssignable"
         class="genweb.portlets.browser.manager.gwManageContextualPortlets"
         template="templates/managehomeportlets.pt"
-        permission="plone.app.portlets.ManagePortlets"
+        permission="genweb.manage.homeportlets"
     />
 
     <browser:page
@@ -30,7 +30,7 @@
         name="manage-portlets"
         class="plone.app.portlets.browser.manage.ManageContextualPortlets"
         template="templates/manage-contextual.pt"
-        permission="plone.app.portlets.ManagePortlets"
+        permission="genweb.manage.homeportlets"
         layer="genweb.portlets.browser.interfaces.IGenwebPortlets"
         />
 
