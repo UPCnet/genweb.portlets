@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.2.8 (unreleased)
+1.2.8 (2014-10-08)
 ------------------
 
-- Nothing changed yet.
-
+* Added new permission for home portlets different that default [Victor Fernandez de Alba]
 
 1.2.7 (2014-09-05)
 ------------------
