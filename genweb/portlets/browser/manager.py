@@ -11,7 +11,10 @@ from plone.app.portlets.browser.interfaces import IManageContextualPortletsView
 from plone.app.portlets.browser.editmanager import ContextualEditPortletManagerRenderer
 
 from Products.CMFCore.utils import getToolByName
+
 from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
+from plone.app.layout.navigation.interfaces import INavigationRoot
+
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
@@ -96,7 +99,7 @@ class setPortletHomeManagerSpan(BrowserView):
 
         # Portlet container will be in the context,
         # Except in the portal root, when we look for an alternative
-        if IPloneSiteRoot.providedBy(self.context):
+        if INavigationRoot.providedBy(self.context):
             pc = getToolByName(context, 'portal_catalog')
             # Add the use case of mixin types of IHomepages. The main ones of a
             # non PAM-enabled site and the possible inner ones.
