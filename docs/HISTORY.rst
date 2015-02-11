@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.2.10 (unreleased)
+1.2.10 (2015-02-11)
 -------------------
 
-- Nothing changed yet.
-
+* Error span portlets [Paco Gregori]
 
 1.2.9 (2015-01-13)
 ------------------
