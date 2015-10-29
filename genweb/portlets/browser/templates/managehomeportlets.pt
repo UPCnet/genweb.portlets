@@ -62,7 +62,7 @@
     <p>
      <a href=""
            class="link-parent"
-           tal:attributes="href string:${context/portal_url}"
+           tal:attributes="href string:${plone_view/getCurrentFolderUrl}"
            i18n:translate="return_to_view">
         Return
      </a>
