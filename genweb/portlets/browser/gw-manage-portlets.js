@@ -18,7 +18,7 @@ $(document).ready(function() {
             'contextId': $(this).data()['contextId'],
             'span': $(this).val()};
     $.ajax({
-      url: "@@set-portlethomemanager-span",
+      url: data.contextId + "/@@set-portlethomemanager-span",
       data: data,
       type: 'POST',
       success: function(data){
