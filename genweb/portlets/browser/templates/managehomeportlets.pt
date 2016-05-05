@@ -56,8 +56,13 @@
       </div>
     </tal:warning>
 
-    <h1 class="documentFirstHeading"
-        i18n:translate="manage_portlets_footer">Manage home portlets</h1>
+    <tal:ishp tal:condition="view/paginaPrincipal">
+      <h1 class="documentFirstHeading" i18n:translate="manage_portlets_footer">Manage home portlets</h1>
+    </tal:ishp>
+
+    <tal:nishp tal:condition="not: view/paginaPrincipal">
+      <h1 class="documentFirstHeading" tal:content="view/getTitle"> titol graella</h1>
+    </tal:nishp>
 
     <p>
      <a href=""

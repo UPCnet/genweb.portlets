@@ -21,12 +21,13 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from genweb.portlets.browser.interfaces import IHomepagePortletManager
 from genweb.core.interfaces import IHomePage
 from genweb.core.utils import pref_lang
+from genweb.theme.browser.interfaces import IHomePageView
 
 from plone.portlets.interfaces import IPortletManager
 
 from zope.annotation.interfaces import IAttributeAnnotatable
 from zope.annotation.interfaces import IAnnotations
-
+from plone.memoize.view import memoize_contextless
 from Acquisition import aq_inner
 
 SPAN_KEY = 'genweb.portlets.span.'
@@ -54,6 +55,14 @@ class gwManageContextualPortlets(ManageContextualPortlets):
         portletManager = getUtility(IPortletManager, name=manager)
         spanstorage = getMultiAdapter((self.context, portletManager), ISpanStorage)
         return spanstorage.span
+
+    @memoize_contextless
+    def getTitle(self):
+        return self.context.title
+
+    @memoize_contextless
+    def paginaPrincipal(self):
+        return IHomePage.providedBy(self.context)
 
 
 class ISpanStorage(IAttributeAnnotatable):
