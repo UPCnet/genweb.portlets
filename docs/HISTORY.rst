@@ -1,11 +1,11 @@
 Changelog
 =========
 
-1.2.12 (unreleased)
+1.2.12 (2016-05-12)
 -------------------
 
-- Nothing changed yet.
-
+* manage home portlet title depend on context [Alberto Duran]
+* to support subhome type [Alberto Duran]
 
 1.2.11 (2015-11-05)
 -------------------
