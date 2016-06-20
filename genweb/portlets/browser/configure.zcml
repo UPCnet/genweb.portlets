@@ -16,6 +16,14 @@
     />
 
     <browser:page
+        name="manage-subhome"
+        for="plone.portlets.interfaces.ILocalPortletAssignable"
+        class="genweb.portlets.browser.manager.gwManageContextualPortlets"
+        template="templates/managesubhome.pt"
+        permission="cmf.ModifyPortalContent"
+    />
+
+    <browser:page
         for="*"
         name="manage-portlets-macros"
         class="plone.app.portlets.browser.manage.ManageContextualPortlets"
