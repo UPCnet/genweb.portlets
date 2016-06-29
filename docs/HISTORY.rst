@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.2.13 (unreleased)
+1.2.13 (2016-06-29)
 -------------------
 
-- Nothing changed yet.
-
+* indenpendent view for subhome type [Alberto Duran]
 
 1.2.12 (2016-05-12)
 -------------------
