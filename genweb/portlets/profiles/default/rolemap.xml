@@ -3,6 +3,7 @@
   <permissions>
     <permission name="Genweb: Manage home portlets"
                 acquire="True">
+      <role name="Editor"/>
       <role name="WebMaster"/>
       <role name="Manager"/>
     </permission>
